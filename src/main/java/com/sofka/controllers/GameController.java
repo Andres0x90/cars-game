@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class GameController 
 {
 	@GetMapping({"/", ""})
-	public String game(@RequestParam(required = false) Integer players,Model model) 
+	public String createGame(@RequestParam(required = false) Integer players,Model model) 
 	{
 		model.addAttribute("players",players);
 		return "create";
 	}
 	
-	
+	@PostMapping("play")
+	public String play() 
+	{
+		return "game";
+	}
 }
