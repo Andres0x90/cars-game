@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<label id="car" style="position:relative;left:0px;">Testing...</label>
+<div>
+<button id="mover">Avanzar</button>
+</div>
+<script type="text/javascript">
+
+		document.getElementById("mover").addEventListener("click",function()
+				{
+				    let pos = document.getElementById("car").style.left.replace("px", "");
+				    pos = parseInt(pos);
+				    pos += 20;
+				    document.getElementById("car").style.left = pos.toString().concat("px"); 
+				});
+</script>
+</body>
+</html>
