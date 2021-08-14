@@ -19,6 +19,7 @@ public class GameController
 	@PostMapping("play")
 	public String play() 
 	{
+		
 		return "game";
 	}
 }

@@ -1,10 +1,31 @@
 package com.sofka.models.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Track 
-{
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tracks")
+public class Track implements Serializable
+{	
+
+	private static final long serialVersionUID = 711500223166737882L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="track_id")
 	private List<Line> lines;
 	private Integer km_distance;
 	

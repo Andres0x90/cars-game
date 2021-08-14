@@ -1,37 +1,35 @@
 package com.sofka.models.entities;
 
-public class Player {
-	private Long id;
-	private String name;
-	private int wins;
-	private Car car;
-	
-	public Player() {
+/* Esta clase no va a ser guardada en la base de datos, ya que a mi parecer la clase *
+ * player solo va a funcionar como un alias de los conductores, y unicamente vamos a utilizar
+ * y persistir los datos de la clase conductor(Driver)*/
 
+public class Player
+{
+	private String nombre;
+	private Driver driver;
+	
+	public Player() 
+	{
+		
 	}
-	public Long getId() {
-		return id;
+	
+	public Player(String nombre, Driver driver) 
+	{
+		this.nombre = nombre;
+		this.driver = driver;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public String getNombre() {
+		return nombre;
 	}
-	public String getName() {
-		return name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public Driver getDriver() {
+		return driver;
 	}
-	public int getWins() {
-		return wins;
-	}
-	public void setWins(int wins) {
-		this.wins = wins;
-	}
-	public Car getCar() {
-		return car;
-	}
-	public void setCar(Car car) {
-		this.car = car;
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 	
 	
