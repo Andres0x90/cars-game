@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Driver implements Serializable{
 
 	private static final long serialVersionUID = 7845022555736807310L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -34,6 +34,12 @@ public class Driver implements Serializable{
 	public Driver() {
 
 	}
+	
+	public Driver(String name, int wins) {
+		this.name = name;
+		this.wins = wins;
+	}
+
 	public Long getId() {
 		return id;
 	}

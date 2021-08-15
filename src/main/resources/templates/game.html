@@ -5,19 +5,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<label id="car" style="position:relative;left:0px;">Testing...</label>
-<div>
-<button id="mover">Avanzar</button>
-</div>
-<script type="text/javascript">
+	<div>
+		<label>Turno: Player</label> <label id="turn">0</label>
+	</div>
+	<div>
+		<label>Dado: </label> <label id="dado"></label>
+	</div>
+	<div>
+		<label>Distancia de la pista: </label> <label id="track">2km</label>
+	</div>
+	<div>
+		<label>Estado: </label> <label id="status">En progreso</label>
+	</div>
+	<div>
+		<button id="move">Avanzar</button>
+	</div>
+	<div th:each="driver,i: ${drivers}">
+		<label th:text="${driver.name}" th:id="${'driver'.concat(i.index.toString())}"></label> 
+		
+		<img width="8%" style="position: relative; left: 0%;" th:src="@{imgs/car.png}"
+			th:id="${'player'.concat(i.index.toString())}"> <label
+			style="position: absolute; left: 90%">META</label>
+	</div>
+	<h3>Ganadores</h3>
+	<form th:action="@{/finish}" method="post">
+		<div th:each="i: ${#numbers.sequence(0, 2)}">
+			<label th:text="${'Puesto '.concat((i+1).toString())}"></label> 
+			<input readonly="readonly" type="text" th:name="places" th:id="${'place'.concat(i.toString())}" />
+		</div>
+		<button hidden="" id="finish">Finalizar</button>
+	</form>
 
-		document.getElementById("mover").addEventListener("click",function()
-				{
-				    let pos = document.getElementById("car").style.left.replace("px", "");
-				    pos = parseInt(pos);
-				    pos += 20;
-				    document.getElementById("car").style.left = pos.toString().concat("px"); 
-				});
-</script>
+	<script type="text/javascript" th:src="@{scripts/game.js}"></script>
 </body>
 </html>

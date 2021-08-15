@@ -5,14 +5,11 @@
 <title th:text="${name}"></title>
 </head>
 <body>
-	<form th:if="${players == null}" th:action="@{/}" method="get">
-		<input type="number" th:name="players" />
-		<button>Crear juego</button>
-	</form>
-	<form th:if="${players}" th:action="@{/play}" method="post">
-		<div th:each="i: ${#numbers.sequence(1, players)}">
+
+	<form th:action="@{/play}" method="post">
+		<div th:each="i: ${#numbers.sequence(1, 5)}">
 			<label th:text="${'player '.concat(i.toString())}"></label> 
-			<input type="text" th:name="${'player'.concat(i.toString())}" />
+			<input type="text" th:name="players" th:id="${'player'.concat(i.toString())}" />
 		</div>
 		<button>Crear juego</button>
 	</form>
