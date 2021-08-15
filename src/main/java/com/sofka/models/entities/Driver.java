@@ -61,6 +61,10 @@ public class Driver implements Serializable{
 	public void setWins(int wins) {
 		this.wins = wins;
 	}
+	public void addWin() 
+	{
+		this.wins += 1;
+	}
 	public List<Car> getCars() {
 		return cars;
 	}
@@ -78,5 +82,7 @@ public class Driver implements Serializable{
 		this.driver_podio = driver_podio;
 	}
 	
-	
+	public void addDriver_podio(DriverPodio driver_podio) {
+		this.driver_podio.add(driver_podio);
+	}
 }

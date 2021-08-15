@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sofka.models.entities.Car;
 import com.sofka.models.entities.Driver;
+import com.sofka.models.entities.DriverPodio;
 import com.sofka.models.entities.Game;
 import com.sofka.models.entities.Line;
 import com.sofka.models.entities.Player;
@@ -36,6 +37,11 @@ public class GameCrudService implements IGameCrudService{
 	@Transactional(readOnly = true)
 	public Driver listById(Long id) {
 		return driverDAO.findById(id).orElse(null);
+	}
+	@Override
+	@Transactional(readOnly = true)
+	public Driver listDriverByName(String name) {
+		return driverDAO.findByName(name);
 	}
 	@Override
 	@Transactional
@@ -115,6 +121,17 @@ public class GameCrudService implements IGameCrudService{
 		return saveGame(game);
 	}
 
-
-
+	@Override
+	@Transactional
+	public void setWinners(String[] drivers, Game game) 
+	{
+		for (int i=0; i<drivers.length; i++) 
+		{
+			Driver driver = listDriverByName(drivers[i]);
+			DriverPodio driverPodio = new DriverPodio(driver, game.getPodio(), i+1);
+			driver.addDriver_podio(driverPodio);
+			driver.addWin();
+			saveDriver(driver);
+		}
+	}
 }
