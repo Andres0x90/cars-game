@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${name}"></title>
+</head>
+<body>
+
+	<form th:action="@{/play}" method="post">
+		<div th:each="i: ${#numbers.sequence(1, 5)}">
+			<label th:text="${'player '.concat(i.toString())}"></label> 
+			<input type="text" th:name="players" th:id="${'player'.concat(i.toString())}" />
+		</div>
+		<div> 
+			<label>Distancia del carril: </label> 
+			<input type="number" min="1" max="10" name="distance" /> <label>km</label>
+		</div>
+		<button>Crear juego</button>
+	</form>
+</body>
+</html>
