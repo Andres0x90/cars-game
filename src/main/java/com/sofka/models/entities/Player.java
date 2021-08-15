@@ -6,7 +6,7 @@ package com.sofka.models.entities;
 
 public class Player
 {
-	private String nombre;
+	private String name;
 	private Driver driver;
 	
 	public Player() 
@@ -14,16 +14,16 @@ public class Player
 		
 	}
 	
-	public Player(String nombre, Driver driver) 
+	public Player(String name, Driver driver) 
 	{
-		this.nombre = nombre;
+		this.name = name;
 		this.driver = driver;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String nombre) {
+		this.name = nombre;
 	}
 	public Driver getDriver() {
 		return driver;

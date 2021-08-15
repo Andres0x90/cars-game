@@ -2,7 +2,9 @@ package com.sofka.models.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,17 +23,18 @@ public class Game implements Serializable
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="track_id")
 	private Track track;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="podio_id")
 	private Podio podio;
 
-	public Game() 
+	public Game(Track track, Podio podio) 
 	{
-		
+		this.track = track;
+		this.podio = podio;
 	}
 	
 	public Long getId() {

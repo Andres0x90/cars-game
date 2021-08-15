@@ -1,6 +1,7 @@
 package com.sofka.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,6 +30,12 @@ public class Track implements Serializable
 	private List<Line> lines;
 	private Integer km_distance;
 	
+	public Track(Integer km_distance) 
+	{
+		lines = new ArrayList<>();
+		this.km_distance = km_distance;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -40,6 +47,10 @@ public class Track implements Serializable
 	}
 	public void setLines(List<Line> lines) {
 		this.lines = lines;
+	}
+	public void addLine(Line line) 
+	{
+		this.lines.add(line);
 	}
 	public Integer getKm_distance() {
 		return km_distance;

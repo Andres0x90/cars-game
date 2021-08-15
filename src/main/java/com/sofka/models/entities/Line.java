@@ -24,6 +24,11 @@ public class Line implements Serializable
 	@JoinColumn(name="car_id")
 	private Car car;
 	
+	public Line(Car car) 
+	{
+		this.car = car;
+	}
+	
 	public Long getId() {
 		return id;
 	}

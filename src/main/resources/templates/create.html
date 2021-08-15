@@ -11,6 +11,10 @@
 			<label th:text="${'player '.concat(i.toString())}"></label> 
 			<input type="text" th:name="players" th:id="${'player'.concat(i.toString())}" />
 		</div>
+		<div> 
+			<label>Distancia del carril: </label> 
+			<input type="number" min="1" max="10" name="distance" /> <label>km</label>
+		</div>
 		<button>Crear juego</button>
 	</form>
 	<div th:replace="components :: home-link"></div>

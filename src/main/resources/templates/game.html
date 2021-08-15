@@ -12,7 +12,7 @@
 		<label>Dado: </label> <label id="dado"></label>
 	</div>
 	<div>
-		<label>Distancia de la pista: </label> <label id="track">2km</label>
+		<label>Distancia de la pista: </label> <label id="track" th:text="${distance.concat('km')}"></label>
 	</div>
 	<div>
 		<label>Estado: </label> <label id="status">En progreso</label>
@@ -22,10 +22,11 @@
 	</div>
 	<div th:each="driver,i: ${drivers}">
 		<label th:text="${driver.name}" th:id="${'driver'.concat(i.index.toString())}"></label> 
+		<label th:text="${'(' + players[i.index].name + ')'}"></label>
 		
 		<img width="8%" style="position: relative; left: 0%;" th:src="@{imgs/car.png}"
-			th:id="${'player'.concat(i.index.toString())}"> <label
-			style="position: absolute; left: 90%">META</label>
+			th:id="${'player'.concat(i.index.toString())}"> 
+			<label style="position: absolute; left: 90%">META</label>
 	</div>
 	<h3>Ganadores</h3>
 	<form th:action="@{/finish}" method="post">

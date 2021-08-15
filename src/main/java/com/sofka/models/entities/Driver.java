@@ -1,8 +1,10 @@
 package com.sofka.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,20 +26,21 @@ public class Driver implements Serializable{
 	private String name;
 	private int wins;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "driver_id")
-	private List<Car> car;
+	private List<Car> cars;
 	
-	@OneToMany(mappedBy = "driver", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "driver", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	List<DriverPodio> driver_podio;
 	
 	public Driver() {
-
+		cars = new ArrayList<Car>();
 	}
 	
 	public Driver(String name, int wins) {
 		this.name = name;
 		this.wins = wins;
+		cars = new ArrayList<Car>();
 	}
 
 	public Long getId() {
@@ -58,15 +61,15 @@ public class Driver implements Serializable{
 	public void setWins(int wins) {
 		this.wins = wins;
 	}
-	public List<Car> getCar() {
-		return car;
+	public List<Car> getCars() {
+		return cars;
 	}
-	public void setCar(List<Car> car) {
-		this.car = car;
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
 	}
 	public void addCar(Car car) 
 	{
-		this.car.add(car);
+		this.cars.add(car);
 	}
 	public List<DriverPodio> getDriver_podio() {
 		return driver_podio;
